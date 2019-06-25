@@ -2,7 +2,7 @@
   "name": "robofriends",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://aneagoie.github.io/robofriends-pwa",
+  "homepage": "https://tomeko74.github.io/TheCompleteJuniortoSeniorWebDeveloperRoadmap/05%20Performance%20Part%202/122.%20Exercise%203%20-%20PWA",
   "dependencies": {
     "gh-pages": "^1.2.0",
     "react": "^16.2.0",
