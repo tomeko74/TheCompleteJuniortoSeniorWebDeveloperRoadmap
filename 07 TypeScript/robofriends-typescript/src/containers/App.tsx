@@ -37,7 +37,7 @@ class App extends React.Component<IAppProps, IAppState> {
     this.setState({ searchfield: event.currentTarget.value })
   }
 
-  render() {
+  render(): JSX.Element {
     const { robots, searchfield } = this.state;
     const filteredRobots = robots.filter(robot =>{
       return robot.name.toLowerCase().includes(searchfield.toLowerCase());
