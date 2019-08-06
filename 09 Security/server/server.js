@@ -1,14 +1,16 @@
 const express = require('express');
-// const cors = require('cors')
+const cors = require('cors')
 // const helmet = require('helmet')
 // var winston = require('winston');
+var morgan = require('morgan');
 
 const bodyParser = require('body-parser');
 const app = express()
 
-// app.use(cors())
+app.use(cors())
 // app.use(helmet())
 app.use(bodyParser.json())
+app.use(morgan('combined'))
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
