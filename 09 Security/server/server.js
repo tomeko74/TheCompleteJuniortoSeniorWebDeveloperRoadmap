@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors')
 // const helmet = require('helmet')
-// var winston = require('winston');
-var morgan = require('morgan');
+var winston = require('winston');
+// var morgan = require('morgan');
 
 const bodyParser = require('body-parser');
 const app = express()
@@ -10,7 +10,7 @@ const app = express()
 app.use(cors())
 // app.use(helmet())
 app.use(bodyParser.json())
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
@@ -18,10 +18,10 @@ app.post('/secret', (req, res) => {
   const { userInput } = req.body;
   console.log(userInput);
   if (userInput) {
-    // winston.log('info', 'user input: ' + userInput);
+    winston.log('info', 'user input: ' + userInput);
     res.status(200).json('success');
   } else {
-    // winston.error('This guy is messing with us:' + userInput);
+    winston.error('This guy is messing with us: ' + userInput);
     res.status(400).json('incorrect submission')
   }
 })
