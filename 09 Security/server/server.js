@@ -8,9 +8,21 @@ const bodyParser = require('body-parser');
 const app = express()
 
 app.use(helmet())
-app.use(cors())
-app.use(bodyParser.json())
 // app.use(morgan('combined'))
+app.use(bodyParser.json())
+
+const whitelist = ['http://example1.com', 'http://example2.com'] // dodać własną domenę
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true) 
+    } else {
+      callback(new Error('Not allowed by CORS')) 
+    }
+  }
+}
+
+app.use(cors(corsOptions))
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
