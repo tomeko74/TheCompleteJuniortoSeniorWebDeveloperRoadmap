@@ -42,7 +42,7 @@ const signToken = (email) => {
 }
 
 const setToken = (key, value) => {
-  return Promise.resolve(redisClient.set(ket, value));
+  return Promise.resolve(redisClient.set(key, value));
 }
 
 const createSessions = (user) => {
@@ -57,7 +57,7 @@ const createSessions = (user) => {
 
 const signinAuthentication = (db, bcrypt) => (req, res) => {
   const { authorization } = req.headers;
-  return authorization ? getAuthTokenId() : 
+  return authorization ? getAuthTokenId(req, res) : 
     handleSignin(db, bcrypt, req, res)
       .then( data => {
         return data.id && data.email ? createSessions(data) : Promise.reject(data)
